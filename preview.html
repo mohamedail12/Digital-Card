@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    </head>
+    <body>
+         <section id="imagePreview" class="preview">
+    
+      <div class="pages">
+<div class="page1">
+<div class="div1">
+  <span>Welcome to the</span>
+  <span id="previeweventType"></span>
+  <span>of</span>
+</div>
+<div class="div2">
+  <h1 id="previewnickName"></h1>
+</div>
+<div class="div3">
+  <span id="datePreview"></span>
+</div>
+
+</div>
+<div class="page2">
+  <div class="div1">
+    <p id="previeweditorGreeting"></p>
+  </div>
+  <div class="div2">
+    <h1 id="previewfullOrganizerName"></h1>
+  </div>
+  <div class="div3">
+    <p id="previeweditorPhrases"></p>
+  </div>
+  <div class="div4">
+    <h2 id="previeworganizerName1"></h2>
+    <p>And</p>
+    <h2 id="previeworganizerName2"></h2>
+  </div>
+  <div class="div5" id="longDatePreview"></div>
+  <div class="div6" id="timePreview"></div>
+  <div class="div7">
+    <p>Venue </p>
+    <p id="previeweditorAddress"></p>
+  </div>
+  <div class="div8" id="dressCodePreview"></div>
+  <div class="div9" id="saveDateContainer"></div>
+</div>
+<div class="page3">
+  <div class="div1">
+    <h4>Programee</h4>
+    <p id="previeweditorProgramme"></p>
+  </div>
+   <div class="div2">
+    <h4>Message</h4>
+    <p id="previeweditorAdditionalInfo"></p>
+  </div>
+  <div class="div3">
+    <h4>Countdown</h4>
+<div id="countdownPreview"class="countdown-container" style="font-weight: bold; margin-top: 10px;"></div>
+  </div>
+</div>
+<div class="page4">
+<div class="div1" >
+  <img id="PreviewImageTag" src="" alt="Preview" style="max-width: 300px; display: none; border-radius: 8px;" />
+</div>
+<div class="div2">
+  <h5>Attendance</h5>
+</div>
+<div class="div3" id="rsvpPreview" style="display: none; margin-top: 15px;">
+  <i class='bx bx-envelope' style="font-size: 24px; color: #007bff;"></i>
+</div>
+<div class="div4">
+<a href="https://numindsdesign.com/" target="_blank">
+  <img src="logosvs.svg" alt="Logo" style="width: 100px; height: auto;" />
+</a> 
+</div>
+</div>
+</div>
+<footer class="footer-icons">
+  <a href="javascript:void(0)" onclick="showCard('contact')" title="Contact"><i class='bx bx-phone'></i></a>
+  <a href="javascript:void(0)" onclick="showCard('song')" title="Music"><i class='bx bx-music'></i></a>
+  <a href="javascript:void(0)" onclick="showCard('location')" title="Maps"><i class='bx bx-map'></i></a>
+  <a href="javascript:void(0)" onclick="showCard('rsvp')" title="RSVP"><i class='bx bx-envelope'></i></a>
+</footer>
+<div id="contact" class="info-card"> 
+  <h5>Contact</h5>
+  <div class="div">
+    <span id="previewcontactName1"></span>
+   <span id="previewcontactNum1"></span>
+      <span id="previewcontactWhats1"></span>
+
+  </div>
+  <div class="div">
+   <span id="previewcontactName2"></span>
+   <span id="previewcontactNum2"></span>
+      <span id="previewcontactWhats2"></span>
+
+  </div>
+</div>
+
+<div id="song" class="info-card">
+  <h3>Song</h3>
+  <div id="musicPreview" >
+        <div id="player-container" style="display: none;">
+          <div id="player"></div>
+        </div>
+</div>
+</div>
+
+<div id="location" class="info-card">
+  <h3>Location</h3>
+  <p>Glass House Glenmarie</p>
+  <p id="previewmapsLink"></p>
+</div>
+
+<div id="rsvp" class="info-card">
+  <h3>RSVP & WISHES</h3>
+  <p id="rsvpPreview"></p>
+  <button>Attending</button>
+  <button>Not Attending</button>
+
+</div>
+
+
+
+    </section>
+        
+        
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="main.js"></script>
+    </body>
+</html>

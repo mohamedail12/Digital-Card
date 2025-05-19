@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Card</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+</head>
+<body>
+    <div class="container">
+    <section class="forms">
+        <div class="form active"id="form1">
+        <h1>Edit Card</h1>
+        <p>Main & Opening</p>
+            <div>
+            <label for="cardLanguage">Card Language:</label>
+              <input type="checkbox" name="english" /> English
+             
+              <input type="checkbox" name="arabic" /> Arabic
+            
+            
+             
+              
+      
+        </div>
+        <div>
+            <label for="package"> Package</label>
+            <select id="package" name="package">
+                <option value="gold">Gold (RM60)</option>
+                <option value="silver">Silver (RM40)</option>
+                <option value="bronze">Bronze (RM30)</option>
+              </select>
+            </div>
+            <div>
+                <label for="design"> Design Code</label>
+<select id="design" name="design"onchange="updateImage()">
+  <option value="designA">Design A</option>
+  <option value="designB">Design B</option>
+  <option value="designC">Design C</option>
+  <option value="designD">Design D</option>
+  <option value="designE">Design E</option>
+</select>
+            </div>
+         
+          <div>
+                <label for="typeOccasion"> Type of occasion</label>
+<select id="typeOccasion" name="typeOccasion">
+  <option value="valueA">Weddings </option>
+  <option value="valueB">birthdays </option>
+  <option value="valueC"> Baby shower </option>
+  <option value="valueD">Henna Night </option>
+  <option value="valueE">Engagement </option>
+</select>
+            </div>
+            <div class="nav-buttons">
+                <button class="arrow-btn" onclick="nextForm()">→</button>
+                <h2 class="stepTitle">1. Main & Opening</h2>
+
+              </div>
+          
+        </div>
+        <div class="form" id="form2">
+            <h1>Edit Card</h1>
+        <p>Cover Page</p>
+        <div>
+        <label for="eventType">Event Type:</label>
+        <input type="text" id="eventType"name="eventType" placeholder="Walimatul Urus" oninput="updatePreview()"/>
+         </div>
+         <div class="colorBorder">
+         <div>
+            <label for="nickname"> name on card:</label>
+            <input type="text" id="nickName" name="nickname" placeholder=" Ahmed & Sara" oninput="updatePreview()"/>
+         </div>
+         <div>
+  <label for="fontSelect">Choose font:</label>
+  <select id="fontSelect" onchange="updateColor()">
+    <option value="Arial">Arial</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times New Roman">Times New Roman</option>
+    <option value="Verdana">Verdana</option>
+  </select>
+</div>
+<div>
+  <label for="colorPicker">Choose color:</label>
+  <input type="color" id="colorPicker" onchange="updateColor()" />
+</div>
+         </div>
+         <div>
+            <label for="eventDate"> date & time:</label>
+          <input type="datetime-local" id="eventDate" name="eventDate" onchange="updateDatePreview()"/>
+         </div>
+            <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                              <h2 class="stepTitle">2. Cover Page</h2>
+              <button class="arrow-btn2" onclick="nextForm()">→</button>
+            </div>
+          </div>
+          
+          <div class="form" id="form3">
+            <h1>Edit Card</h1>
+        <p>Invitation Text</p>
+        <div>
+            <label for="Greeting"> Greeting:</label>
+            <div class="editor-container">
+                <div class="toolbar">
+                  <button onclick="format('bold','editorGreeting')"><i class='bx bx-bold'></i></button>
+                  <button onclick="format('italic','editorGreeting')"><i class='bx bx-italic'></i></button>
+                  <button onclick="format('underline','editorGreeting')"><i class='bx bx-underline'></i></button>
+                  <button onclick="format('justifyRight','editorGreeting')"><i class='bx bx-align-right'></i></button> 
+                  <button onclick="format('justifyCenter','editorGreeting')"><i class='bx bx-align-justify'></i>;</button> 
+                  <button onclick="format('justifyLeft','editorGreeting')"><i class='bx bx-align-left'></i></button> 
+                  <select onchange="changeFontSize(this.value,'editorGreeting')">
+                    <option value="1">10px</option>
+                    <option value="2">13px</option>
+                    <option value="3">16px</option>
+                    <option value="4">18px</option>
+                  </select>
+                  <select onchange="changeFont(this.value,'editorGreeting')">
+                    <option value="Default">Default</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Tahoma">Tahoma</option>
+                  </select>
+                </div>
+              
+                <div id="editorGreeting" class="content" contenteditable="true" placeholder=""oninput="updatePreview()" >
+                  مرحباً بكم
+                </div>
+              </div>
+            </div>
+            <div class="organizer-section">
+              <label class="organizer-label">
+                Number of Organizer
+                <span class="required">*</span>
+              </label>
+            
+            <div class="radio-group" >
+              <label class="radio-option" >
+                <input type="radio" name="organizerCount" value="one" onchange="handleOrganizerCountChange()">
+                One
+              </label>
+               <label class="radio-option">
+                <input type="radio" name="organizerCount" value="two" onchange="handleOrganizerCountChange()">
+                Two
+              </label>
+</div>
+            </div>
+            <div class="colorBorder" id="colorBorder1">
+        <div>
+                <label for="organizerName">Organizer's Name 1 (Optional):</label>
+             <input type="text"id="organizerName1"name="organizerName" oninput="updatePreview()"/>
+            </div>
+         <div>
+  <label for="fontSelect">Choose font:</label>
+  <select id="fontSelect" onchange="updateColor2()">
+    <option value="Arial">Arial</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times New Roman">Times New Roman</option>
+    <option value="Verdana">Verdana</option>
+  </select>
+</div>
+<div>
+  <label for="colorPicker">Choose color:</label>
+  <input type="color" id="colorPicker" onchange="updateColor2()" />
+</div>
+         </div>
+          <div class="colorBorder" id="colorBorder2">
+        <div>
+                <label for="organizerName">Organizer's Name 2 (Optional):</label>
+             <input type="text"id="organizerName2"name="organizerName" oninput="updatePreview()"/>
+            </div>
+         <div>
+  <label for="fontSelect">Choose font:</label>
+  <select id="fontSelect" onchange="updateColor3()">
+    <option value="Arial">Arial</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times New Roman">Times New Roman</option>
+    <option value="Verdana">Verdana</option>
+  </select>
+</div>
+<div>
+  <label for="colorPicker">Choose color:</label>
+  <input type="color" id="colorPicker" onchange="updateColor3()" />
+</div>
+         </div>
+           
+            <div>
+                <label for="Phrases"> Phrases:</label>
+                <div class="editor-container">
+                    <div class="toolbar">
+                      <button onclick="format('bold','editorPhrases')"><i class='bx bx-bold'></i></button>
+                      <button onclick="format('italic','editorPhrases')"><i class='bx bx-italic'></i></button>
+                      <button onclick="format('underline','editorPhrases')"><i class='bx bx-underline'></i></button>
+                      <button onclick="format('justifyRight','editorPhrases')"><i class='bx bx-align-right'></i></button> 
+                      <button onclick="format('justifyCenter','editorPhrases')"><i class='bx bx-align-justify'></i>;</button> 
+                      <button onclick="format('justifyLeft','editorPhrases')"><i class='bx bx-align-left'></i></button> 
+                      <select onchange="changeFontSize(this.value,'editorPhrases')">
+                        <option value="1">10px</option>
+                        <option value="2">13px</option>
+                        <option value="3">16px</option>
+                        <option value="4">18px</option>
+                      </select>
+                      <select onchange="changeFont(this.value,'editorPhrases')">
+                        <option value="Default">Default</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Tahoma">Tahoma</option>
+                      </select>
+                    </div>
+                  
+                    <div id="editorPhrases" class="content" contenteditable="true" placeholder="اكتب تحيتك هنا..." oninput="updatePreview()">
+                        Cordially invite 
+                        Dato' | Datin | Mr. | Mrs. | Ms.
+                        to the wedding reception of our son and daughter
+                    </div>
+                  </div>
+                </div>
+                <div>
+                    <label for="fullName">Full Name (Optional):</label>
+                 <input type="text"id="fullOrganizerName"name="fullOrganizerName" oninput="updatePreview()"/>
+                </div>
+            <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                <h2 class="stepTitle">3. Invitation Text</h2>
+
+              <button class="arrow-btn2" onclick="nextForm()">→</button>
+            </div>
+          </div>
+          
+          <div class="form" id="form4">
+            <h1>Edit Card</h1>
+            <p>Venue & Navigation</p>
+           
+            <div>
+                <label for="address"> Address:</label>
+                <div class="editor-container">
+                    <div class="toolbar">
+                      <button onclick="format('bold','editorAddress')"><i class='bx bx-bold'></i></button>
+                      <button onclick="format('italic','editorAddress')"><i class='bx bx-italic'></i></button>
+                      <button onclick="format('underline','editorAddress')"><i class='bx bx-underline'></i></button>
+                      <button onclick="format('justifyRight','editorAddress')"><i class='bx bx-align-right'></i></button> 
+                      <button onclick="format('justifyCenter','editorAddress')"><i class='bx bx-align-justify'></i>;</button> 
+                      <button onclick="format('justifyLeft','editorAddress')"><i class='bx bx-align-left'></i></button>  
+                      <select onchange="changeFontSize(this.value,'editorAddress')">
+                        <option value="1">10px</option>
+                        <option value="2">13px</option>
+                        <option value="3">16px</option>
+                        <option value="4">18px</option>
+                      </select>
+                      <select onchange="changeFont(this.value,'editorAddress')">
+                        <option value="Default">Default</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Tahoma">Tahoma</option>
+                      </select>
+                    </div>
+                  
+                    <div id="editorAddress" class="content" contenteditable="true" placeholder="اكتب تحيتك هنا..." oninput="updatePreview()">
+                      مرحباً بكم
+                    </div>
+                  </div>
+                </div>
+                <div>
+                    <label for="mapsLink">Google Maps Link:</label>
+<input type="url" id="mapsLink" name="mapsLink" placeholder=" https://maps.google.com/..." oninput="updateMapPreview()"/>
+                </div>
+          <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                <h2 class="stepTitle">4. Venue & Navigation</h2>
+              <button class="arrow-btn2" onclick="nextForm()">→</button>
+            </div>
+          </div>
+          <div class="form" id="form5">
+            <h1>Edit Card</h1>
+            <p>Programme & Add .Info</p>
+            <div>
+                <label for="Programme"> Programme:</label>
+                <div class="editor-container">
+                    <div class="toolbar">
+                      <button onclick="format('bold','editorProgramme')"><i class='bx bx-bold'></i></button>
+                      <button onclick="format('italic','editorProgramme')"><i class='bx bx-italic'></i></button>
+                      <button onclick="format('underline','editorProgramme')"><i class='bx bx-underline'></i></button>
+                      <button onclick="format('justifyRight','editorProgramme')"><i class='bx bx-align-right'></i></button> 
+                      <button onclick="format('justifyCenter','editorProgramme')"><i class='bx bx-align-justify'></i>;</button> 
+                      <button onclick="format('justifyLeft','editorProgramme')"><i class='bx bx-align-left'></i></button> 
+                      <select onchange="changeFontSize(this.value,'editorProgramme')">
+                        <option value="1">10px</option>
+                        <option value="2">13px</option>
+                        <option value="3">16px</option>
+                        <option value="4">18px</option>
+                      </select>
+                      <select onchange="changeFont(this.value,'editorProgramme')">
+                        <option value="Default">Default</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Tahoma">Tahoma</option>
+                      </select>
+                    </div>
+                  
+                    <div id="editorProgramme" class="content" contenteditable="true" placeholder="اكتب تحيتك هنا..." oninput="updatePreview()">
+                       Lunch : 11:00 am - 5:00 pm
+                        The Arrival of Bride & Groom: 12.30 pm
+                    </div>
+                  </div>
+                </div>
+                <div>
+                    <label for="additonInformatiom"> message:</label>
+                    <div class="editor-container">
+                        <div class="toolbar">
+                          <button onclick="format('bold','editorAdditionalInfo')"><i class='bx bx-bold'></i></button>
+                      <button onclick="format('italic','editorAdditionalInfo')"><i class='bx bx-italic'></i></button>
+                      <button onclick="format('underline','editorAdditionalInfo')"><i class='bx bx-underline'></i></button>
+                      <button onclick="format('justifyRight','editorAdditionalInfo')"><i class='bx bx-align-right'></i></button> 
+                      <button onclick="format('justifyCenter','editorAdditionalInfo')"><i class='bx bx-align-justify'></i>;</button> 
+                      <button onclick="format('justifyLeft','editorAdditionalInfo')"><i class='bx bx-align-left'></i></button> 
+                          <select onchange="changeFontSize(this.value,'editorAdditionalInfo')">
+                            <option value="1">10px</option>
+                            <option value="2">13px</option>
+                            <option value="3">16px</option>
+                            <option value="4">18px</option>
+                          </select>
+                          <select onchange="changeFont(this.value,'editorAdditionalInfo')">
+                            <option value="Default">Default</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Tahoma">Tahoma</option>
+                          </select>
+                        </div>
+                      
+                        <div id="editorAdditionalInfo" class="content" contenteditable="true" placeholder="اكتب تحيتك هنا..." oninput="updatePreview()">
+                            
+                            ADAM HAWA
+                        </div>
+                      </div>
+                    </div>
+  <div id="addPhoto">
+  <label for="imageUpload">Upload Image:</label>
+  <input type="file" id="imageUpload" accept="image/*" onchange="previewImage()" />
+</div>
+            <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                <h2 class="stepTitle">5. Programme & Add .Info</h2>
+              <button class="arrow-btn2" onclick="nextForm()">→</button>
+            </div>
+          </div>
+          <div class="form" id="form6">
+            <h1>RSVP</h1>
+            <div>
+            <label for="DeadlineRSVP"> Deadline to RSVP (Optional):</label>
+          <input type="datetime-local" id="DeadlineRSVP" name="DeadlineRSVP" oninput="checkRSVPFields()"/>
+         </div>
+         <div>
+        <label for="MaxPax">Maximum Pax per RSVP:</label>
+        <input type="number" id="MaxPax"name="MaxPax" placeholder=" 10" oninput="checkRSVPFields()"/>
+         </div>
+         <div>
+        <label for="TotalGuests">Total of Guests:</label>
+        <input type="number" id="TotalGuests"name="TotalGuests" placeholder=" 10000" oninput="checkRSVPFields()" />
+         </div>
+ <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                              <h2 class="stepTitle">6. RSVP Page</h2>
+              <button class="arrow-btn2" onclick="nextForm()">→</button>
+            </div>
+          </div>
+          <div class="form" id="form7">
+            <h1>EDIT CARD</h1>
+            <p>Contacts</p>
+            <div class="contact-block">
+                <h3>Contact 1 (optional)</h3>
+                <input type="text" id="contactName1" placeholder="Ahmad" oninput="updatePreview()">
+                <input type="text" id="contactRelation1" placeholder="Hubungan/Relationship (optional)" oninput="updatePreview()">
+                <input type="text" id="contactNum1" placeholder="0123456789" oninput="updateCallPreview1()" >
+                <label class="toggle-label">
+                  <input class="inputCheck" id="contactWhats1" type="checkbox" onchange="updateWhatsappPreview1()">
+                  <span class="slider"></span>
+                  WhatsApp
+                </label>
+              </div>
+              <div class="contact-block">
+                <h3>Contact 2 (optional)</h3>
+                <input type="text" id="contactName2" placeholder="Nama/Nama" oninput="updatePreview()">
+                <input type="text" id="contactRelation2" placeholder="Hubungan/Relationship (optional)" oninput="updatePreview()">
+                <input type="text" id="contactNum2" placeholder="Nombor Telefon/Phone Number"oninput="updateCallPreview2()" >
+                <label class="toggle-label">
+                  <input class="inputCheck" id="contactWhats2" type="checkbox" onchange="updateWhatsappPreview2()">
+                  <span class="slider"></span>
+                  WhatsApp
+                </label>
+              </div>
+
+            <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                <h2 class="stepTitle">7. Contacts</h2>
+              <button class="arrow-btn2" onclick="nextForm()">→</button>
+            </div>
+          </div>
+          
+          <div class="form" id="form8">
+            <h1>Edit Card</h1>
+            <p>Song & Autoscroll</p>
+           
+            <div>
+              <label for="youtubeLink">YouTube Link for Song (optional):</label>
+              <input
+                type="url"
+                id="youtubeLink"
+                name="youtubeLink"
+                placeholder="e.g. https://youtu.be/VIDEO_ID?t=19"
+                onchange="updateMusicPreview()"
+              />
+            </div>
+            
+            <div>
+              <label for="startTime">Start At (mm:ss):</label>
+              <input
+                type="text"
+                id="startTime"
+                name="startTime"
+                placeholder="e.g. 00:19"
+                onchange="updateMusicPreview()"
+              />
+              <button class="btnPlay" id="playPauseButton" disabled onclick="togglePlayPause()" >
+                <span>Play</span> <span><i class='bx bx-play'></i></span>
+              </button>
+            </div>
+            
+            <div>
+              <label class="toggle-label">
+                <input class="autoPlay" id="autoPlay" type="checkbox" onchange="updateMusicPreview()">
+                <span class="slider"></span>
+                AutoPlay
+              </label>
+            </div>
+            
+
+
+            <div class="nav-buttons">
+                <button class="arrow-btn" onclick="prevForm()">←</button>
+                <h2 class="stepTitle">8. Song & Autoscroll</h2>
+                <button class="arrow-btn2" onclick="nextForm()">→</button>
+            
+          </div>
+        </div>
+          
+          <div class="form" id="form9">
+            <h1>Edit Card</h1>
+            <p>Final Review </p>
+            <div>
+              <label class="toggle-label">
+                <input class="inputCheck" type="checkbox">
+                <span class="slider"></span>
+                Venue
+              </label>
+            </div>
+            <div>
+              <label class="toggle-label">
+                <input class="inputCheck" type="checkbox">
+                <span class="slider"></span>
+                Date
+              </label>
+            </div>
+            <div>
+              <label class="toggle-label">
+                <input class="inputCheck" type="checkbox">
+                <span class="slider"></span>
+                Time
+              </label>
+            </div>
+            <div>
+              <label class="toggle-label">
+                <input class="inputCheck" type="checkbox">
+                <span class="slider"></span>
+                Time End
+              </label>
+            </div>
+           
+            <div>
+              <label class="toggle-label">
+                <input class="inputCheck" type="checkbox">
+                <span class="slider"></span>
+                Programme
+              </label>
+            </div>
+           
+             <div>
+              <label class="toggle-label" id="countdownLabel">
+                <input  type="checkbox"id="countdownToggle" onchange="toggleCountdown()">
+                <span class="slider"></span>
+                countdown
+              </label>
+            </div>
+             <div>
+              <label class="toggle-label">
+                <input  type="checkbox" id="saveDateToggle" onchange="toggleSaveDate()">
+                <span class="slider"></span>
+               save the date
+              </label>
+            </div>
+             <div>
+              <label class="toggle-label">
+                <input  type="checkbox"id="dressCodeToggle" onchange="toggleDressCode()">
+                <span class="slider"></span>
+                dress code 
+              </label>
+            </div>
+            <div id="dressCodeInputContainer" style="display: none; margin-top: 10px;">
+  <label for="dressCodeInput">Enter Dress Code:</label>
+  <input type="text" id="dressCodeInput" placeholder="e.g. Formal, White & Gold..." oninput="updatePreview2()" />
+</div>
+            <div class="nav-buttons">
+              <button class="arrow-btn" onclick="prevForm()">←</button>
+                <h2 class="stepTitle">9. Final Review</h2>
+                
+              <button class="arrow-btn2" onclick="SubmitEvent"> save </button>
+          
+        </div>
+            
+          </div>
+    </section>
+    <section id="imagePreview" class="preview">
+    
+      <div class="pages">
+<div class="page1">
+  <p id="previeweventType"></p>
+
+
+  <h1 id="previewnickName"></h1>
+
+  <span id="datePreview"></span>
+</div>
+<div class="page2">
+  <div class="div1">
+    <p id="previeweditorGreeting"></p>
+  </div>
+  <div class="div2">
+    <h1 id="previewfullOrganizerName"></h1>
+  </div>
+  <div class="div3">
+    <p id="previeweditorPhrases"></p>
+  </div>
+  <div class="div4">
+    <h2 id="previeworganizerName1"></h2>
+    <h2 id="previeworganizerName2"></h2>
+  </div>
+  <div class="div5" id="longDatePreview"></div>
+  <div class="div6" id="timePreview"></div>
+  <div class="div7">
+    <p id="previeweditorAddress"></p>
+  </div>
+  <div class="div8" id="dressCodePreview"></div>
+  <div class="div9" id="saveDateContainer"></div>
+</div>
+<div class="page3">
+  <div class="div1">
+    <p id="previeweditorProgramme"></p>
+  </div>
+   <div class="div2">
+    <p id="previeweditorAdditionalInfo"></p>
+  </div>
+  <div class="div3">
+<div id="countdownPreview"class="countdown-container" style="font-weight: bold; margin-top: 10px;"></div>
+  </div>
+</div>
+<div class="page4">
+<div class="div1" >
+  <img id="PreviewImageTag" src="" alt="Preview" style="max-width: 300px; display: none; border-radius: 8px;" />
+</div>
+
+<footer class="footer-icons">
+  <a href="javascript:void(0)" onclick="showCard('contact')" title="Contact"><i class='bx bx-phone'></i></a>
+  <a href="javascript:void(0)" onclick="showCard('song')" title="Music"><i class='bx bx-music'></i></a>
+  <a href="javascript:void(0)" onclick="showCard('location')" title="Maps"><i class='bx bx-map'></i></a>
+  <a href="javascript:void(0)" onclick="showCard('rsvp')" title="RSVP"><i class='bx bx-envelope'></i></a>
+</footer>
+</div>
+
+</div>
+
+<div id="contact" class="info-card"> 
+  <h5>Contact</h5>
+  <div class="div">
+    <span id="previewcontactName1"></span>
+   <span id="previewcontactNum1"></span>
+      <span id="previewcontactWhats1"></span>
+
+  </div>
+  <div class="div">
+   <span id="previewcontactName2"></span>
+   <span id="previewcontactNum2"></span>
+      <span id="previewcontactWhats2"></span>
+
+  </div>
+</div>
+
+<div id="song" class="info-card">
+  <h3>Song</h3>
+  <div id="musicPreview" >
+        <div id="player-container" style="display: none;">
+          <div id="player"></div>
+        </div>
+</div>
+</div>
+
+<div id="location" class="info-card">
+  <h3>Location</h3>
+  <p>Glass House Glenmarie</p>
+  <p id="previewmapsLink"></p>
+</div>
+
+<div id="rsvp" class="info-card">
+  <h3>RSVP & WISHES</h3>
+  <p id="rsvpPreview"></p>
+  <button>Attending</button>
+  <button>Not Attending</button>
+
+</div>
+
+
+
+    </section>
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
